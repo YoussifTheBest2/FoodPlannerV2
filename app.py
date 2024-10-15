@@ -84,7 +84,24 @@ def index():
         # Pass all items to the template for display
         return render_template("index.html", brItems=brItems, luItems=luItems, diItems=diItems)
 
+@app.route('/delete/<int:id>/<string:meal>')
+def delete(id,meal):
 
+    try:
+        if meal == "breakfast":
+        
+        # Delete from BreakfastM
+            BreakfastM.query.filter_by(id=id).delete()
+        elif meal == "lunch":
+            LunchM.query.filter_by(id=id).delete()
+        elif meal == "dinner":
+            DinnerM.query.filter_by(id=id).delete()
+
+        db.session.commit()
+        return redirect('/')
+    except Exception as e:
+        print(f"Error deleting item: {e}")
+        return "There was an issue deleting your item."
 
 @app.route('/brChoose')
 def brChoose():
@@ -104,4 +121,5 @@ def diChoose():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
