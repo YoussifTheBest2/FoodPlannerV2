@@ -44,21 +44,24 @@ def index():
         try:
             # Access form data using correct field names (ensure they match your HTML form)
             brItemContent = request.form['brContent']
-            new_brItem = BreakfastM(content=brItemContent)
+            brItemCount = request.form['brCount']
+            new_brItem = BreakfastM(content=brItemContent,count = brItemCount)
             items_to_add.append(new_brItem)  # Add successfully created Breakfast item
         except KeyError:
             pass  # Ignore missing 'brContent' field
 
         try:
             luItemContent = request.form['luContent']
-            new_luItem = LunchM(content=luItemContent)  # Use LunchM for lunch items
+            luItemCount = request.form['luCount']
+            new_luItem = LunchM(content=luItemContent,count=luItemCount)  # Use LunchM for lunch items
             items_to_add.append(new_luItem)  # Add successfully created Lunch item
         except KeyError:
             pass  # Ignore missing 'luContent' field
 
         try:
             diItemContent = request.form['diContent']
-            new_diItem = DinnerM(content=diItemContent)  # Use DinnerM for dinner items
+            diItemCount = request.form['diCount']
+            new_diItem = DinnerM(content=diItemContent,count=diItemCount)  # Use DinnerM for dinner items
             items_to_add.append(new_diItem)  # Add successfully created Dinner item
         except KeyError:
             pass  # Ignore missing 'diContent' field
@@ -84,6 +87,8 @@ def index():
         # Pass all items to the template for display
         return render_template("index.html", brItems=brItems, luItems=luItems, diItems=diItems)
 
+
+
 @app.route('/delete/<int:id>/<string:meal>')
 def delete(id,meal):
 
@@ -102,6 +107,10 @@ def delete(id,meal):
     except Exception as e:
         print(f"Error deleting item: {e}")
         return "There was an issue deleting your item."
+
+
+
+
 
 @app.route('/brChoose')
 def brChoose():
