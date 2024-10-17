@@ -47,9 +47,9 @@
                   <td>{{ Item.id }}</td>
                   <td>{{ Item.content }}</td>
                   <td>{{ Item.count }}</td>
-                  <td>{{ Item.calories }}</td>
+                  <td>{{ Item.calories * Item.count }}</td>
                   <td class="d-flex justify-content-evenly align-items-center flex-wrap">
-                    <a class="btn btn-sm btn-primary" href="">Update</a>
+                    
                     <a class="btn btn-sm btn-danger" href="/delete/{{Item.id}}/{{'breakfast'}}">Delete</a>
                   </td>
                   
@@ -92,9 +92,9 @@
                   <td>{{ Item.id }}</td>
                   <td>{{ Item.content }}</td>
                   <td>{{ Item.count }}</td>
-                  <td>{{ Item.calories }}</td>
+                  <td>{{ Item.calories * Item.count }}</td>
                   <td class="d-flex justify-content-evenly align-items-center flex-wrap">
-                    <a class="btn btn-sm btn-primary" href="">Update</a>
+                    
                     <a class="btn btn-sm btn-danger" href="/delete/{{Item.id}}/{{'lunch'}}">Delete</a>
                   </td>
                   
@@ -135,9 +135,9 @@
                   <td>{{ Item.id }}</td>
                   <td>{{ Item.content }}</td>
                   <td>{{ Item.count }}</td>
-                  <td>{{ Item.calories }}</td>
+                  <td>{{ Item.calories * Item.count}}</td>
                   <td class="d-flex justify-content-evenly align-items-center flex-wrap">
-                    <a class="btn btn-sm btn-primary" href="">Update</a>
+                    
                     <a class="btn btn-sm btn-danger" href="/delete/{{Item.id}}/{{'dinner'}}">Delete</a>
                   </td>
                   
